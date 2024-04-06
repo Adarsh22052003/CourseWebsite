@@ -4,8 +4,8 @@ import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay,
 import {RiDashboardFill, RiLoginBoxLine, RiMenu5Fill} from "react-icons/ri"
 import { Link } from 'react-router-dom';
 
-const LinkButton = ({url="/", title = "Home"})=>(
-    <Link to={url}>
+const LinkButton = ({url="/", title = "Home" ,onClose})=>(
+    <Link onClick={onClose} to={url}>
         <Button variant={'ghost'} >{title}</Button>
     </Link>
 ) ;
@@ -19,6 +19,7 @@ const Header = () => {
 
     const logoutHandler = ()=>{
         console.log("logout");
+        onClose();
     }
   return <>
     <ColorModeSwitcher/>
@@ -43,11 +44,11 @@ const Header = () => {
             </DrawerHeader>
             <DrawerBody>
                 <VStack spacing={'3'} alignItems={'flex-start'}>
-                    <LinkButton url='/' title='Home'/>
-                    <LinkButton url='/courses' title='Browse a Courses'/>
-                    <LinkButton url='/request' title='Request a Course'/>
-                    <LinkButton url='/contact' title='Contact Us'/>
-                    <LinkButton url='/abour' title='About'/>
+                    <LinkButton onClose={onClose} url='/' title='Home'/>
+                    <LinkButton onClose={onClose} url='/courses' title='Browse a Courses'/>
+                    <LinkButton onClose={onClose} url='/request' title='Request a Course'/>
+                    <LinkButton onClose={onClose} url='/contact' title='Contact Us'/>
+                    <LinkButton onClose={onClose} url='/abour' title='About'/>
                     <HStack 
                         justifyContent={'space-evenly'} 
                         position={'absolute'} 
@@ -57,7 +58,7 @@ const Header = () => {
                     {isAuthenticated?(<>
                         <VStack>
                             <HStack>
-                                <Link to='/profile'>
+                                <Link onClick={onClose} to='/profile'>
                                     <Button colorScheme='yellow' >Profile</Button>
                                 </Link>
                                 <Button variant={'ghost'} onClick={logoutHandler}>
@@ -77,11 +78,11 @@ const Header = () => {
                             }
                         </VStack>
                     </>):(<>
-                        <Link to='/login'>
+                        <Link onClick={onClose} to='/login'>
                             <Button colorScheme='yellow' >Login</Button>
                         </Link>
                         <p>Or</p>
-                        <Link to='/registaer'>
+                        <Link onClick={onClose} to='/registaer'>
                             <Button colorScheme='yellow' >Sign Up</Button>
                         </Link>
                     </>)}
