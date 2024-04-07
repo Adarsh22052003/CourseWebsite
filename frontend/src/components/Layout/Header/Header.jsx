@@ -48,7 +48,7 @@ const Header = () => {
                     <LinkButton onClose={onClose} url='/courses' title='Browse a Courses'/>
                     <LinkButton onClose={onClose} url='/request' title='Request a Course'/>
                     <LinkButton onClose={onClose} url='/contact' title='Contact Us'/>
-                    <LinkButton onClose={onClose} url='/abour' title='About'/>
+                    <LinkButton onClose={onClose} url='/about' title='About'/>
                     <HStack 
                         justifyContent={'space-evenly'} 
                         position={'absolute'} 
